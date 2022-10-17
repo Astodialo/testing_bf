@@ -11,6 +11,7 @@ import Control.Monad
 import Data.Aeson.Types
 import Control.Monad.IO.Class
 import Control.Monad.Trans.Class
+import Data.Either
 
 main = do
   putStrLn "Give AssetID:" 
@@ -18,5 +19,7 @@ main = do
   let addr =  mkAddress "addr_test1qq9nxds4hzf7t0w8u438rpkecsndgr4vhja557epdvvkcwcrslr6z7k4cu83jrg63ap36a7p9wld2hkt8ef3ev37dwmsv4hxlt"
   prj <- projectFromEnv
   res <- runBlockfrost prj $ getAssetAddresses (mkAssetId $ pack ass)
-  print res
- 
+  case res of
+    Left err -> print "AssetID doesnt exist"
+    Right res ->  print (fmap (unAddress . _assetAddressAddress) res)-- ++ "Ammount: " ++ (fmap _assetAddressQuantity res))
+  
