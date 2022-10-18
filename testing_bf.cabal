@@ -34,12 +34,14 @@ executable testingbf
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
     build-depends:    base ^>=4.14.3.0
-                      ,blockfrost-client
-                      ,blockfrost-api
-                      ,aeson
-                      ,servant-docs
-                      ,lens
-                      ,text
-                      ,transformers
+                      , blockfrost-client
+                      , blockfrost-api
+                      , aeson
+                      , servant-docs
+                      , lens
+                      , text
+                      , transformers
+                      , blockfrost-pretty
+                      , safe-money
     hs-source-dirs:   app
     default-language: Haskell2010
